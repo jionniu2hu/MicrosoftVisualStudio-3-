@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MvcMovie.Models.Movie>
+
+@{
+    ViewBag.Title = "电影";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("新增", "Create")
+    @using (Html.BeginForm("Index", "Movies", FormMethod.Get))
+    {
+    <p>
+        类别: @Html.DropDownList("movieGenre", "All")
+        相关字符: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="查询" />
+    </p>
+    }
+  </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @*电影名*@
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @*发布时间*@
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @*电影类型*@
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @*价格*@
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
