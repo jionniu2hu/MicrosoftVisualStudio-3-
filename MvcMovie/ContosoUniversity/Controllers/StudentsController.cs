@@ -92,7 +92,7 @@ namespace ContosoUniversity.Controllers
             }
             return View(student);
         }
-
+        
         // GET: Students/Create
         public ActionResult Create()
         {
@@ -181,5 +181,6 @@ namespace ContosoUniversity.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

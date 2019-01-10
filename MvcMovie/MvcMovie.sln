@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMovie", "MvcMovie\MvcMov
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoUniversity", "ContosoUniversity\ContosoUniversity.csproj", "{F7D60384-0C5E-4CC8-8AD3-0FD588127170}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMusicStore", "MvcMusicStore\MvcMusicStore.csproj", "{8D0B2AEA-D021-4259-BE52-9FF8BB837FF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F7D60384-0C5E-4CC8-8AD3-0FD588127170}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7D60384-0C5E-4CC8-8AD3-0FD588127170}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7D60384-0C5E-4CC8-8AD3-0FD588127170}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D0B2AEA-D021-4259-BE52-9FF8BB837FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D0B2AEA-D021-4259-BE52-9FF8BB837FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D0B2AEA-D021-4259-BE52-9FF8BB837FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D0B2AEA-D021-4259-BE52-9FF8BB837FF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
