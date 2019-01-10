@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using ContosoUniversity.DAL;
 using ContosoUniversity.Models;
+using PagedList;
+using System.Data.Entity.Infrastructure;
 
 namespace ContosoUniversity.Controllers
 {
@@ -16,15 +18,38 @@ namespace ContosoUniversity.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Students
-        public ActionResult Index(string sortOrder)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            //分页
+            ViewBag.CurrentSort = sortOrder;
+
             //sortOrder接受排序参数，根据sortOrder值改变下一次排序的参数值
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
+            //分页整理
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+
+
             //整体查询
             var students = from s in db.Students
                            select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.Name.Contains(searchString));
+            }
+
 
             //根据排序参数sortOrder进一步完善查询students（排序）
             switch (sortOrder)
@@ -41,11 +66,16 @@ namespace ContosoUniversity.Controllers
                 default:
                     students = students.OrderBy(s => s.Name);
                     break;
-            }            
+            }
 
-            var result = db.Students.ToList();
-            //把结果数据集到数据集返回视图
-            return View(result);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize));
+
+
+            //var result = db.Students.ToList();
+            ////把结果数据集到数据集返回视图
+            //return View(result);
         }
 
         // GET: Students/Details/5
